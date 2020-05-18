@@ -1,0 +1,82 @@
+<odoo>
+  <data>
+    <record id="transaction_manager_view" model="ir.ui.view">
+      <field name="name">transaction.manager.view</field>
+      <field name="model">transaction.manager</field>
+      <field name="arch" type="xml">
+        <form string="Transaction Manager">
+          <sheet string="Transaction Manager">
+            <div class="oe_title">
+              <h1>
+                <field name="name" placeholder="Tên giao dịch" attrs="{'readonly': [('status', '=', 'Closed')]}"/>
+              </h1>
+              <!-- <div name="options_active">
+                            <div>
+                                <label for="label_tasks" class="oe_inline" string="Name of the tasks :" />
+                                <field name="label_tasks" class="oe_inline oe_input_align" />
+                            </div>
+                        </div> -->
+            </div>
+            <group>
+              <group>
+                <!-- <field name="transaction_name"/> -->
+                <field name="stage_name" attrs="{'readonly': [('status', '=', 'Closed')]}"/>
+                <field name="next_stage" attrs="{'readonly': [('status', '=', 'Closed')]}"/>
+                <field name="sale_order_id" attrs="{'readonly': [('status', '=', 'Closed')]}"/>              
+                <field name="product_id" readonly = '1' attrs="{'readonly': [('status', '=', 'Closed')]}"/>
+                <field name="customer_id" readonly = '1' attrs="{'readonly': [('status', '=', 'Closed')]}"/>
+
+              </group>
+              <group>    
+                <field name="pay_amount" attrs="{'readonly': [('status', '=', 'Closed')]}"/>           
+                <field name="expired_date" attrs="{'readonly': [('status', '=', 'Closed')]}"/>
+                <field name="status" attrs="{'readonly': [('status', '=', 'Closed')]}"/>
+              </group>
+            </group>
+            <group string = "Notes">              
+              <field name="description" placeholder= "Mô tả thêm....." attrs="{'readonly': [('status', '=', 'Closed')]}"/>
+              <!-- <page string="Thông tin giao dịch">
+                <field name="payment_infomation" attrs="{'readonly': [('status', '=', 'Closed')]}"/>
+              </page> -->
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="transaction_manager_tree" model="ir.ui.view">
+      <field name="name">transaction.manager.tree</field>
+      <field name="model">transaction.manager</field>
+      <field name="arch" type="xml">
+        <tree string="Transaction Manager" decoration-danger="status == 'Closed'" decoration-success="status == 'Open'">
+          <field name="name"/>
+          <field name="customer_id"/>
+          <field name="product_id"/>
+          <field name="expired_date"/>
+          <field name="status"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="transaction_manager_action">
+      <field name="name">Transaction Manager</field>
+      <field name="res_model">transaction.manager</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Create something
+        </p>
+      </field>
+    </record>
+     <menuitem id="customer_menu_transactionmanagement_salemanagement" 
+              name="Sale Management" 
+              parent="customer_menu_transactionmanagement" 
+              sequence="5" />
+    <menuitem id="customer_menu_transactionmanagement_commission_salemanagement" 
+            name="Sale Management" 
+            parent="customer_menu_transactionmanagement_salemanagement" 
+            action="transaction_manager_action" 
+            sequence="1" />
+    <!-- <menuitem id="main_transaction_manager_menu" name="Transaction Manager"/>
+    <menuitem id="transaction_manager_menu" name="Transaction Manager" parent="main_transaction_manager_menu"/>
+    <menuitem id="transaction_manager" name="Transaction Manager" parent="transaction_manager_menu" action="transaction_manager_action"/> -->
+  </data>
+</odoo>

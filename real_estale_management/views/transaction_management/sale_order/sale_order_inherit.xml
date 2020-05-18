@@ -1,0 +1,103 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="customer.form_view">
+      <field name="name">my_contacts Form View</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"></field>
+      <field name="arch" type="xml">
+        <field name="payment_term_id" position="after">
+          <field name="cart_id"></field>
+          <field name="product_number" readonly="1"></field>
+
+        </field>
+        <!-- <field name="preview_sale_order" position="attributes">
+          <attribute name="invisible">1</attribute>
+            
+        </field> -->
+        <button name="preview_sale_order" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </button>
+        <button name="action_quotation_send" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </button>
+       
+        <xpath expr="//page[@name='order_lines']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//page[@name='order_lines']" position="after">
+          <page string="List Of Products Sold" name="list_product_sold">
+            <field name="product_ids" widget="many2many" domain="[('is_check','=',True)]" nolabel="1" select="1" colspan="4">
+              <tree string="Registered sessions" editable="bottom">
+                <field name="is_check" type="checkbox" readonly="1" />
+                <field name="name" readonly="1" />
+                <field name="type" readonly="1" />
+                <field name="project_id" readonly="1" />
+                <field name="taxes_id" string = "Taxes" widget= "many2many_tags" readonly="1"/>                  
+                <field name="list_price" readonly="1" />
+                               
+              </tree>
+
+            </field>
+            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+              <field name="money_untaxed" readonly="1" widget="monetary" options="{'currency_field': 'currency_id'}" />
+              <field name="money_tax_amount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+              <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                <label for="total_money" />
+              </div>
+              <field name="total_money" nolabel="1" readonly="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}" />
+            </group>
+          </page>
+          <page string="Sales Commission" name="sales_commission">
+            <group>
+              <group>
+
+                <field name="commission_id" string="Commission Calculation" />
+                <field name="product_number" readonly="1"></field>
+                <!-- <field name="commission_calculator_ids" readonly="1"></field> -->
+
+              </group>
+              <group>
+
+                <field name="commission_rate" readonly="1"></field>
+                <field name="total_commission_money" readonly="1"></field>
+              </group>
+
+
+            </group>
+
+          </page>
+        </xpath>
+        <!-- <xpath expr="//page/field[@name='order_line']/.." position="after">
+          <attribute name="invisible">1</attribute>
+        </xpath> -->
+        <xpath expr="//page[@name='other_information']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+
+
+      </field>
+    </record>
+
+    <record id="inherit_view_sale_form__quotation_form" model="ir.ui.view">
+      <field name="name">sale.order.form.quotations</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale_management.sale_order_form_quote" />
+      <field name="arch" type="xml">
+        <!-- <xpath expr="//page[@name='optional_products']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath> -->
+        <xpath expr="//page[2]" position="attributes">
+          <attribute name="name">optional_products</attribute>
+        </xpath>
+        <xpath expr="//page[@name='optional_products']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='sale_order_template_id']" position="replace">
+          <field name="sale_order_template_id" invisible="1"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

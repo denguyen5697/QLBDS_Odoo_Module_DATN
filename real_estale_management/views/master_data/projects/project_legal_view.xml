@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Project type -->
+
+       <!-- màn hình hiển thị project type -->
+        <record model="ir.actions.act_window" id="Customer_Projectlegal_list_action">
+            <field name="name">Project Legal</field>
+            <field name="res_model">legal</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+        </record>
+
+       <menuitem id="customer_menu_masterdata_project_projectlegal" name="Projects Legal"
+                  parent="customer_menu_masterdata_project" action="Customer_Projectlegal_list_action"
+                  sequence="4"/>
+
+        <!-- <menuitem id="customer_menu_project_projecttype" name="Projects Type"
+                  parent="customer_menu_project" action="Customer_ProjectType_list_action"
+                  sequence="3"/>           -->
+
+      <record model="ir.ui.view" id="project_legal_form_view">
+            <field name="name">legal.form</field>
+            <field name="model">legal</field>
+            <field name="arch" type="xml">
+                <form string="Legal Form">
+                    <sheet>
+                        <group>
+                            <field name="legal_code"/>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <!-- <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Sessions">
+                                <field name="session_ids">
+                                    <tree string="Registered sessions">
+                                        <field name="name"/>
+                                        <field name="instructor_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="About">This is an example of notebooks
+                            </page>
+                        </notebook> -->
+                    </sheet>
+                </form>
+            </field>
+        </record>  
+        <record model="ir.ui.view" id="project_legal_tree_view">
+            <field name="name">legal.tree</field>
+            <field name="model">legal</field>
+            <field name="arch" type="xml">
+                <tree string="Legal Tree">
+                    <field name="legal_code"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>              
+                                                        
+</odoo>

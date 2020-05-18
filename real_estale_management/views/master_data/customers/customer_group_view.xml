@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="customergroup_list_action">
+        <field name="name">User Group</field>
+        <field name="res_model">res.partner.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        
+    <menuitem id="tags_customergroup_menu_customers" name="User Group"
+                  parent="customer_menu_masterdata_customers" action="customergroup_list_action"
+                  sequence="4"/> 
+                                                         
+</odoo>

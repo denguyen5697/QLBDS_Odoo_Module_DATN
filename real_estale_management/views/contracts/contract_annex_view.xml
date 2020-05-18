@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+<record id= "contract_annex_tree_view" model ="ir.ui.view">
+        <field name="name">Contract_annex.tree</field>
+        <field name="model">contract_annex</field>
+        <field name="arch" type="xml">
+            <tree string="Contract Annex">
+                <field name="annex_id"/>
+                <field name="name_annex"/> 
+                <field name="description_annex"/>
+            </tree>
+        </field>
+</record>
+
+<record model="ir.ui.view" id="contract_annex_form_view">
+            <field name="name">Contract Annex Form View</field>
+            <field name="model">contract_annex</field>
+            <field name="arch" type="xml">
+            <form string="Contract Annex">
+                <group>
+                    <group>
+                        <field name="annex_id"/>
+                        <field name="name_annex"/>
+                        <field name="description_annex"/>
+                    </group>
+                </group>
+            </form>
+            </field>
+</record>         
+
+<record id="contract_annex_action" model="ir.actions.act_window">
+        <field name="name">Contract Annex</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">contract_annex</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field> 
+        <!-- <field name="search_view_id" ref="base.view_res_partner_filter"/> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a contact in your address book
+          </p><p>
+            Odoo helps you to easily track all activities related to a customer.
+          </p>
+        </field>
+
+</record>
+
+ <menuitem id="customer_contract_annex" name="Contract Annex"
+        parent="customer_menu_transactionmanagement_contract" action="contract_annex_action"
+        sequence = "2"/>
+
+</odoo>

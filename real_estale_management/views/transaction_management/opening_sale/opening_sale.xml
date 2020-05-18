@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="openingsale_list_action">
+            <field name="name">Opening sale</field>
+            <field name="res_model">customer.opening.sale</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="customer_menu_transactionmanagement_openingsale_openingsale" name="Opening Sale List"
+            parent="customer_menu_transactionmanagement_openingsale" action="openingsale_list_action"
+            sequence="1"/>         
+     
+                                                         
+</odoo>

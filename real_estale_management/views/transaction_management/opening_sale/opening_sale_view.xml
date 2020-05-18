@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+        <record model="ir.ui.view" id="course_tree_view">
+            <field name="name">customer.opening.sale.tree</field>
+            <field name="model">customer.opening.sale</field>
+            <field name="arch" type="xml">
+                <tree string="Opening Sale Tree">
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="cart_id"/>
+                    <!-- <field name="agency_id" attrs="{'required': [('agency', '==', True)]}"/> -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- form -->
+        <record model="ir.ui.view" id="session_form_view">
+            <field name="name">customer.opening.sale.form</field>
+            <field name="model">customer.opening.sale</field>
+            <field name="arch" type="xml">
+                <form string="Opening Sales Form">
+                <header>
+                    <button name="your_button"
+                    class="oe_highlight" string="Assignment" type="object"/>
+                </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Openning sale"/>
+                            <h1>
+                                <field name="name" placeholder="Openning sale name..."/>
+                            </h1>
+                            <!-- <div name="options_active" attrs="{'invisible': ['&amp;', ('team_type', '!=', 'sales'), ('team_type', '!=', 'website')]}"/> -->
+                        </div>
+                        <notebook>
+                                <group string='Cart'>
+                                <group>
+                                    <group>
+                                        <field name="start_date"/>
+                                        <field name="end_date"/>
+                                    </group>
+                                    <group>
+                                        <field name="agency_id" widget="many2many_tags" />
+                                    </group>
+                                </group>
+                                    <group>
+                                       <field name="product_id"  widget="many2many" nolabel="1" select="1" colspan="4" domain="[('is_check', '=', False)]"> 
+                                        <tree string="Registered sessions" editable = "bottom">
+                                            <field name="is_check" type="checkbox" />
+                                            <field name="name" readonly="1"/>
+                                            <field name="stage_name"/>
+                                            <field name="project_id" readonly="1"/>
+                                            <field name="product_type" readonly="1"/> 
+                                            <field name="taxes_id" string = "Taxes" widget= "many2many_tags" readonly="1"/>        
+                                            <field name="list_price" readonly="1"/>                                            
+                                                                                       
+                                        </tree>
+                                    </field>
+                                    </group>  
+                                </group>                                                                             
+                                <group string="Cart of Agency">
+                                <field name="cart_ids">
+                                    <tree string="Registered sessions">
+                                    
+                                        <field name="cart_code"/>
+                                        <field name="name"/>
+                                        <field name="start_date"/>
+                                        <field name="end_date"/>
+                                        <field name="status"/>
+                                    </tree>
+                                </field>
+                       
+                            </group>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- <record model="ir.ui.view" id="opening_sales_tree_view">
+            <field name="name">customer.opening.sale.tree</field>
+            <field name="model">customer.opening.sale</field>
+            <field name="arch" type="xml">
+                <tree string="Product Tree">                   
+                    <field name="product_id" attrs="{'invisible':[('product_id.is_check','=',True)]}"/>
+                </tree>
+            </field>
+        </record> -->
+    
+</odoo>

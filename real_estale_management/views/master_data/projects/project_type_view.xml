@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Project type -->
+
+       <!-- màn hình hiển thị project type -->
+        <record model="ir.actions.act_window" id="Customer_ProjectType_list_action">
+            <field name="name">Project Type</field>
+            <field name="res_model">typeproject</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+        </record>
+
+       <menuitem id="customer_menu_masterdata_project_projecttype" name="Projects Type"
+                  parent="customer_menu_masterdata_project" action="Customer_ProjectType_list_action"
+                  sequence="2"/>
+
+      <record model="ir.ui.view" id="project_type_form_view">
+            <field name="name">typeproject.form</field>
+            <field name="model">typeproject</field>
+            <field name="arch" type="xml">
+                <form string="Project Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <!-- <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Sessions">
+                                <field name="session_ids">
+                                    <tree string="Registered sessions">
+                                        <field name="name"/>
+                                        <field name="instructor_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="About">This is an example of notebooks
+                            </page>
+                        </notebook> -->
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+        <record model="ir.ui.view" id="projectype_tree_view">
+            <field name="name">typeproject.tree</field>
+            <field name="model">typeproject</field>
+            <field name="arch" type="xml">
+                <tree string="Project Type Tree">
+                    <!-- <field name="legal_code"/> -->
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>                  
+                                                        
+     
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_contract_document">
+        <div class="c x4 y5 w3 h4">
+            <div class="t m0 x5 h5 y6 ff4 fs2 fc0 sc0 ls0 ws0" style ="margin-left: 300px;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM <span class="ff2 fs1"> </span></div>
+            <div class="t m0 x6 h6 y7 ff4 fs2 fc0 sc0 ls0 ws0" style ="margin-left: 370px;">Độc lập –<span class="ff5"> </span>Tự do –<span class="ff5"> </span>Hạnh phúc <span class="ff2 fs1"> </span></div>
+            <div class="t m0 x7 h7 y8 ff6 fs2 fc0 sc0 ls0 ws0" style ="margin-left: 380px;">--------o0o------- <span class="ff2 fs1"> </span></div>
+            <div class="t m0 x8 h8 y9 ff5 fs3 fc0 sc0 ls0 ws0"> <span class="ff2 fs1"> </span></div>
+            <div class="t m0 x9 h9 ya ff4 fs3 fc0 sc0 ls0 ws0" style ="margin-left: 200px;">HỢP ĐỒNG CHUYỂN N<span class="_ _1"></span>HƯỢNG QUYỀN S<span class="_ _1"></span>Ử DỤNG ĐẤT  <span class="_ _1"></span><span class="ff2 fs1"> </span></div>
+            <div class="t m0 xa ha yb ff7 fs2 fc0 sc0 ls0 ws0" style ="margin-left: 275px;">(không có tài sản gắn liền với đất) Số: </div>
+            <div class="t m0 xb hb yc ff7 fs2 fc0 sc0 ls0 ws0" style ="margin-left: 340px;">010/2018/HĐCN /XX<span class="ff8">X<span class="ff2 fs1"> </span></span></div>
+            <div class="t m0 x8 hb yd ff8 fs2 fc0 sc0 ls0 ws0"> <span class="ff2 fs1"> </span></div>
+            <div class="t m0 xc h5 ye ff9 fs2 fc0 sc0 ls0 ws0">Địa điểm:<span class="ff8"> <span class="ff7">...........................................<span class="ffa"> <span class="ff2 fs1"> </span></span></span></span></div>
+            <div class="t m0 xd h5 yf ff6 fs2 fc0 sc0 ls0 ws0">-<span class="ff3"> <span class="_ _2"> </span><span class="ff7">Căn cứ Luật kinh doanh Bất động sản số 66/2014/QH13 ngày 25 tháng 11 năm </span></span></div><div class="t m0 xd h5 y10 ff8 fs2 fc0 sc0 ls0 ws0">2014; <span class="ff2 fs1"> </span></div><div class="t m0 xd h5 y11 ff6 fs2 fc0 sc0 ls0 ws0">-<span class="ff3"> <span class="_ _2"> </span><span class="ff7 fs4">Căn cứ Luật đấ<span class="_ _1"></span>t đai nước Cộng Hòa<span class="_ _1"></span> Xã Hội Chủ Nghĩa Việt Nam ng<span class="_ _1"></span>ày 29 tháng 11 năm 2013;<span class="_ _1"></span> <span class="_ _1"></span><span class="ff2 fs1"> </span></span></span></div><div class="t m0 xd h5 y12 ff6 fs2 fc0 sc0 ls0 ws0">-<span class="ff3"> <span class="_ _2"> </span><span class="ff7">Căn cứ Bộ Luật dân sự số: 91/2015/QH13 ngày 24 tháng 11 năm 2015; </span></span><span class="ff3">  <span class="_ _3"></span></span></div><div class="t m0 xd h5 y13 ff7 fs2 fc0 sc0 ls0 ws0">- Căn cứ vào nhu cầu và khả năng của các bên. <span class="ff2 fs1"> </span></div><div class="t m0 xe h5 y14 ffb fs2 fc0 sc0 ls0 ws0">Hôm nay, ngày  tháng  năm , Chúng tôi gồm có: <span class="ff2 fs1"> </span></div><div class="t m0 xd h7 y15 ff6 fs2 fc0 sc0 ls1 ws0">I.<span class="_ _1"></span><span class="ff3 ls0"> <span class="_ _4"> </span><span class="ff4">BÊN CHUYỂN NHƯỢNG QSDĐ (gọi tắt là Bên A)<span class="ff6"> <span class="ff2 fs1"> </span></span></span></span></div><div class="t m0 xd h5 y16 ff4 fs2 fc0 sc0 ls0 ws0">CÔNG TY CỔ PHẦN ĐẦU TƯ BẤT ĐỘNG SẢN:<span class="m-0" t-field="doc.customer_id1"/><span class="ff2 fs1"> </span></div><div class="t m0 xd h5 y17 ffb fs2 fc0 sc0 ls0 ws0">Trụ sở:<span class="m-0" t-field="doc.company_address"/> <span class="ff6"> <span class="_ _5"> </span></span><span class="ff2 fs1"> </span></div><div class="t m0 xd h5 y18 ffb fs2 fc0 sc0 ls0 ws0">Mã số thuế:<span class="m-0" t-field="doc.company_taxcode"/> <span class="ff6"> <span class="_ _6"> </span><span class="ff2 fs1"> </span></span></div><div class="t m0 xd h5 y19 ffb fs2 fc0 sc0 ls0 ws0">Điện thoại:<span class="m-0" t-field="doc.company_phone"/> <span class="ff6"> <span class="_ _7"> </span><span class="_ _8"> </span>  <span class="ff2 fs1"> </span></span></div><div class="t m0 xd h5 y1a ffb fs2 fc0 sc0 ls0 ws0">Tài khoản <span class="ff6"> <span class="_ _9"> </span></span>: ……………… <span class="ff2 fs1"> </span></div><div class="t m0 xd h5 y1b ffb fs2 fc0 sc0 ls0 ws0">Đại diện:<span class="m-0" t-field="doc.representative"/> <span class="ff6"> <span class="_ _a"> </span><span class="ff5"> <span class="ff4"><span class="ff8"> <span class="ff2 fs1"> </span></span></span></span></span></div><div class="t m0 xd h5 y1c ffb fs2 fc0 sc0 ls0 ws0">Chức vụ:<span class="m-0" t-field="doc.representative_pos"/> <span class="ff6"> <span class="_ _a"> </span><span class="ls2"></span><span class="ff4"><span class="ff2 fs1"> </span></span></span></div><div class="t m0 xd hb y1d ff8 fs2 fc0 sc0 ls0 ws0"> <span class="ff2 fs1"> </span></div><div class="t m0 xd h7 y1e ff6 fs2 fc0 sc0 ls0 ws0">II.<span class="ff3"> <span class="_ _b"> </span><span class="ff4">BÊN NHẬN CHUYỂN NHƯỢNG QSDĐ (gọi tắt là Bên B): <span class="ff2 fs1"> </span></span></span></div><div class="t m0 xd h5 y1f ffb fs2 fc0 sc0 ls0 ws0">Họ và tên của Khách hàng<span class="ff2 fs1"> </span></div><div class="t m0 xd h5 y20 ff6 fs2 fc0 sc0 ls0 ws0">Ông/Bà:<span class="m-0" t-field="doc.customer_id"/><span class="_ _8"> </span><span class="ffb">Năm sinh:<span class="m-0" t-field="doc.customer_date"/><span class="ff2 fs1"> </span></span></div><div class="t m0 xd h5 y21 ffb fs2 fc0 sc0 ls0 ws0">CMND/ CCCD số:<span class="m-0" t-field="doc.customer_identity"/><span class="ff6"> <span class="_ _c"> </span></span>Ngày cấp:<span class="m-0" t-field="doc.customer_date_identity"/><span class="ff2 fs1"> </span></div><div class="t m0 xd h5 y22 ffb fs2 fc0 sc0 ls0 ws0">Nơi cấp:<span class="m-0" t-field="doc.customer_place_of_issue"/><span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y24 ffb fs2 fc0 sc0 ls0 ws0">Địa chỉ thường trú: <span class="m-0" t-field="doc.customer_street"/><span class="ff2 fs1"></span></div>
+            <div class="t m0 xd h5 y25 ffb fs2 fc0 sc0 ls0 ws0">Địa chỉ liên lạc:<span class="m-0" t-field="doc.customer_sreet2"/><span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y26 ffb fs2 fc0 sc0 ls0 ws0">Điện thoại:<span class="m-0" t-field="doc.customer_phone"/><span class="ff6"> <span class="_ _d"> </span></span><span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y27 ffb fs2 fc0 sc0 ls0 ws0">Email:<span class="m-0" t-field="doc.customer_email"/><span class="ff6"> <span class="_ _9"> </span><span class="ff1 fs4"> <span class="_ _1"></span><span class="ff2 fs1"> </span></span></span></div>
+            <div class="t m0 xd he y28 ff9 fs1 fc0 sc0 ls3 ws0">Hai bên thỏa thuận ký<span class="_ _1"></span> kết Hợp đồng với <span class="_ _1"></span>các nội dung như sa<span class="_ _1"></span>u: <span class="_ _1"></span><span class="ff2 ls0"> </span></div>
+            <div class="t m0 xd h5 y29 ff4 fs2 fc0 sc0 ls0 ws0">ĐIỀU 1: ĐỊNH NGHĨA VÀ GIẢI THÍCH<span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y2a ff4 fs2 fc0 sc0 ls0 ws0">ĐIỀU 2: NỘI DUNG HỢP ĐỒNG <span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y2b ff4 fs2 fc0 sc0 ls0 ws0">ĐIỀU 3: GIÁ CHUYỂN NHƯỢNG <span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y2c ff4 fs2 fc0 sc0 ls0 ws0">ĐIỀU 4: PHƯƠNG THỨC THANH TOÁN <span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y2d ff4 fs2 fc0 sc0 ls0 ws0">ĐIỀU 5: CAM KẾT CỦA BÊN A <span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y2e ff4 fs2 fc0 sc0 ls0 ws0">ĐIỀU 6: CAM KẾT CỦA BÊN B <span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y2f ff4 fs2 fc0 sc0 ls0 ws0">ĐIỀU 7: ĐIỀU KIỆN BẤT KHẢ KHÁNG <span class="ff2 fs1"> </span></div>
+            <div class="t m0 xd h5 y30 ff4 fs2 fc0 sc0 ls0 ws0">ĐIỀU 8: ĐIỀU KHOẢN THI HÀNH VÀ THÔNG BÁO<span class="ff6"> <span class="ff2 fs1"> </span></span></div>
+            <div class="t m0 xd h5 y31 ff4 fs2 fc0 sc0 ls0 ws0">ĐIỀU 9: HIỆU LỰC HỢP ĐỒNG<span class="ff6"> <span class="ff2 fs1"> </span></span></div>
+            <div class="t m0 xf h5 y32 ff6 fs2 fc0 sc0 ls0 ws0">1.<span class="ff3"> <span class="_ _e"> </span><span class="ffb">Hợp đồng này có hiệu lực kể từ ngày ký. <span class="ff2 fs1"> </span></span></span></div>
+            <div class="t m0 xf h5 y33 ff6 fs2 fc0 sc0 ls0 ws0">2.<span class="ff3"> <span class="_ _e"> </span><span class="ffb">Hợp đồng này được lập thành 03 <span class="ff8">(ba)</span></span></span> <span class="ffb">bản có giá trị pháp lý như nhau, </span></div>
+            <div class="t m0 x10 h5 y34 ffb fs2 fc0 sc0 ls0 ws0">Bên B giữ 01 <span class="ff7">(một)<span class="ff6"> </span></span>bản, Bên A giữ 02 <span class="ff8">(hai)<span class="ff6"> </span></span>bản để thực hiện. <span class="ffa"> <span class="ff2 fs1"> </span></span></div>
+            <!-- <div class="t m0 x11 h6 y35 ff5 fs2 fc0 sc0 ls0 ws0"> <span class="ff2 fs1"> </span></div><div class="t m0 xd h7 y36 ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _f"> </span><span class="ff5 fs2">BÊN A<span class="_ _10"><span class="_ _1"></span><span class="_ _1"></span></span>BÊN B <span class="ff2 fs1"> </span></span></div> -->
+            <div class="g-grid">
+                <div class="g-grid-col">
+                    Bên A
+                </div>
+                <div class="g-grid-col">
+                    Bên B
+                </div>
+            </div>
+        </div>
+         <!-- <div class="col-auto mw-100 mb-2">
+                    <strong>Email:</strong>
+                    <p class="m-0" t-field="doc.customer_email"/> -->
+</template>
+<template id="report_contract">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="customer.report_contract_document"/>
+        </t>
+    </t>
+</template>
+</odoo>
+
+

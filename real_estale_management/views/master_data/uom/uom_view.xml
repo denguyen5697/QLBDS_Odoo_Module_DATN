@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+         <record model="ir.actions.act_window" id="Customer_uom_list_action">
+            <field name="name">Sale Team List</field>
+            <field name="res_model">uom.uom</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+        </record>
+
+   
+         <menuitem id="customer_menu_masterdata_uom" name="Uoms"
+                  parent="customer_menu_masterdata"
+                  sequence="5"/>
+         <menuitem id="customer_menu_masterdata_uom_uom" name="Uom List"
+                  parent="customer_menu_masterdata_uom" action="Customer_uom_list_action"
+                  sequence="1"/>
+                 
+      
+     
+</odoo>

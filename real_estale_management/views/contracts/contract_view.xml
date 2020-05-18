@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <record id="contract_action" model="ir.actions.act_window">
+        <field name="name">Contract List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">contract</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <!-- <field name="search_view_id" ref="base.view_res_partner_filter"/> -->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Create a contact in your address book
+          </p>
+            <p>
+            Odoo helps you to easily track all activities related to a customer.
+          </p>
+        </field>
+
+    </record>
+
+
+    <menuitem id="customer_contract" name="Contract" parent="customer_menu_transactionmanagement_contract" action="contract_action" sequence="1" />
+
+    <record id="contract_tree_view" model="ir.ui.view">
+        <field name="name">Contract.tree</field>
+        <field name="model">contract</field>
+        <field name="arch" type="xml">
+            <tree string="Contract">
+                <field name="contract_id" />
+                <field name="name" />
+                <field name="product_id" />
+                <field name="project_rel" />
+                <field name="date_start" />
+                <field name="status" statusbar_visible="1,2,3" />
+
+                <!-- <field name="partner_id"/>
+                <field name="street"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="contract_view_kanban" model="ir.ui.view">
+        <field name="name">contract.form</field>
+        <field name="model">contract</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" default_group_by="status">
+                <!-- <field name="user_id" string="Project Manager"/> -->
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
+                                        oe_kanban_global_click_edit oe_semantic_html_override">
+                            <div class="row">
+                                <div class="col-12">
+                                    <strong><field name="name" string="Project Name"/></strong>
+                                </div>
+                            </div>
+                            <div class="row">                           
+                                <div class="col-12">
+                                    <field name="product_id"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <lable>Dự án:</lable>
+                                </div>                           
+                                <div class="col-8">
+                                    <field name="product_id"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <lable>Ngày kí:</lable>
+                                </div>                           
+                                <div class="col-8">
+                                    <field name="date_start"/>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="contract_form_view">
+        <field name="name">Contract Form View</field>
+        <field name="model">contract</field>
+        <field name="arch" type="xml">
+            <form string="Contract Form">
+                <header>
+                    <button name="print_contract" string="Print" type="object"  class="btn-primary o_sale_print"/>
+                    <!-- <a t-attf-href="'/report/pdf/contract.contract_report_template/%s' % i.id">
+                        <button type="button" class="btn btn-primary btn-md o_website_form_send">Print PDF</button>
+                    </a> -->
+                    <!-- <button name="%(crm.crm_lead_lost_action)d" string="Mark Lost"
+                            type="action" class="oe_highlight"
+                           
+                           /> -->
+
+                    <!-- <button name="your_button"
+             class="oe_highlight" string="Assignment" type="object"/> -->
+                    <button name="print_contract_pdf" string="Print PDF" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Contract Information" />
+                        <h1>
+                            <field name="name" placeholder="Contract Name..." />
+                        </h1>
+                        <div name="options" groups="base.group_user">
+                            <div>
+                                <field name="signed" />
+                                <label for="signed" />
+                            </div>
+                            <div>
+                                <field name="not_signed" />
+                                <label for="not_signed" />
+                            </div>
+                        </div>
+                        <!-- <div name="options_active" attrs="{'invisible': ['&amp;', ('team_type', '!=', 'sales'), ('team_type', '!=', 'website')]}"/> -->
+                    </div>
+                    <notebook>
+                        <page string="Contract Information Detail">
+                            <group>
+                                <group string="General">
+                                    <field name="contract_id" />
+                                    <field name="product_id" />
+                                    <field name="project_rel" />
+                                    <field name="date_start" />
+                                    <field name="status" />
+                                    <field name="customer_id" />
+                                    <field name="customer_id1" />
+                                    <field name="representative" />
+                                </group>
+                                <!-- <group string ='Transferor Information'>
+                                <field name="customer_id"/>
+                                <field name="customer_rel"/>
+                            </group> -->
+                            </group>
+                            <group string="Internal Notes">
+                                <field name="description" />
+                            </group>
+                        </page>
+                        <page string="Information Detail">
+                            <group>
+                                <group string="Party A (Transferor)">
+                                    <field name="customer_id" /> 
+                                    <field name="customer_date" />
+                                    <field name="customer_identity" />
+                                    <field name="customer_date_identity" />
+                                    <field name="customer_place_of_issue" />
+                                    <field name="customer_street" />
+                                    <field name="customer_sreet2" />
+                                    <field name="customer_phone" />
+                                    <field name="customer_email" />
+                                </group>
+                                <group string="Party B (Transferee)">
+                                    <field name="customer_id1"/>
+                                    <field name="company_address"/>
+                                    <field name="company_phone"/>
+                                    <field name="representative"/>
+                                    <field name="representative_pos"/>
+                                </group>
+                                <group string="Internal Notes">
+                                    <field name="description" />
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Contract Annex Information">
+                            <group string="Contract Annex">
+                                <field name="annex_id" />
+                            </group>
+                        </page>
+                        <page string="Status Transaction" attrs="{'invisible':[('signed','=',False)]}" name="status">
+                            <group string="Status Transaction">
+                                <field name="status_id" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

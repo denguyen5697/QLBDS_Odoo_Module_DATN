@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <record id="payment_info_view" model="ir.ui.view">
+            <field name="name">payment_info_view</field>
+            <field name="model">payment.info</field>
+            <field name="arch" type="xml">
+                <form string="Payment Infomation">
+                    <sheet>
+                        <group>
+                            <field name="step_name" string="Tên bước giao dịch"/>
+                            <field name="pay_amount" string="Số tiền thanh toán"/>
+                            <field name="date" string="Thời gian giao dịch"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="payment_info_tree" model="ir.ui.view">
+            <field name="name">payment_info_tree</field>
+            <field name="model">payment.info</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Infomation">
+                    <field name="step_name"/>
+                    <field name="pay_amount"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="payment_info_action">
+            <field name="name">Payment Infomation</field>
+            <field name="res_model">payment.info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create something
+                </p>
+            </field>
+        </record>
+        <menuitem id="main_payment_info_menu" name="Payment Infomation"/>
+        <menuitem id="payment_info_menu" name="Payment Infomation" parent="main_payment_info_menu"/>
+        <menuitem id="payment_info" name="Payment Infomation" parent="payment_info_menu" action="payment_info_action"/>
+    </data>
+</odoo>

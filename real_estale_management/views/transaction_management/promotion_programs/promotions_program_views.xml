@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form view chung giữa trương trình phiếu giảm giá và các chương trình khuyến mãi -->
+    <record model="ir.ui.view" id="sale_coupon_program_view_form_common">
+        <field name="name">sale.coupon.program.common.form</field>
+        <field name="model">sale.coupon.program</field>
+        <field name="arch" type="xml">
+            <form string="Coupon Program">
+                <sheet>
+                    <div name="title" class="oe_left">
+                        <label class="oe_edit_only" for="name" string="Program Name" />
+                    </div>
+
+                    <group>
+                        <group name="conditions" string="Conditions">
+                            <field name="active" invisible="1" />
+                            <field name="program_type" invisible="1" />
+                            <field name="rule_products_domain" placeholder="Select product" widget="domain" options="{'model': 'product.product', 'in_dialog': true}" />
+                            <label string="Quantity" for="rule_min_quantity" attrs="{'invisible': [('rule_products_domain', '=', False)]}" />
+                            <div attrs="{'invisible': [('rule_products_domain', '=',False)]}">
+                                <field name="rule_min_quantity" class="oe_inline" />
+                            </div>
+                            <label string="Minimum Purchase Of" for="rule_minimum_amount" />
+                            <div name="rule_minimum_amount" class="o_row">
+                                <field name="currency_id" invisible="1" />
+                                <field name="rule_minimum_amount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                                <field name="rule_minimum_amount_tax_inclusion" />
+                            </div>
+                            <field name="company_id" placeholder="Select company" groups="base.group_multi_company"></field>
+                        </group>
+                        <group name="validity" string="Validity" />
+                    </group>
+                    <group string="Rewards">
+                        <group name="reward">
+                            <field name="reward_type" string="Reward" widget="radio" />
+                            <field name="discount_line_product_id" attrs="{'invisible': [('discount_line_product_id', '=', False)]}" readonly="True" />
+                        </group>
+                        <group>
+                            <field name="reward_product_id" attrs="{'invisible': [('reward_type', 'in', ('discount', 'free_shipping'))], 'required': [('reward_type', '=', 'product')]}" placeholder="Select reward product" />
+                            <label string="Quantity" for="reward_product_quantity" attrs="{'invisible': ['|', ('reward_type', 'in', ('discount', 'free_shipping')), ('reward_product_id', '=',False)]}" />
+                            <div attrs="{'invisible': ['|', ('reward_type', 'in', ('discount', 'free_shipping')),('reward_product_id', '=',False)]}">
+                                <field name="reward_product_quantity" class="oe_inline" />
+                                <field name="reward_product_uom_id" class="oe_inline" />
+                            </div>
+                            <label string="Apply Discount" for="discount_type" attrs="{'invisible': [('reward_type', 'in', ('product', 'free_shipping'))]}" />
+                            <div attrs="{'invisible': [('reward_type', 'in', ('product', 'free_shipping'))]}">
+                                <field name="discount_type" class="oe_inline" attrs="{'required': [('reward_type','=','discount')]}" />
+                                <field name="discount_percentage" attrs="{'invisible': [('discount_type', '!=', 'percentage')],'required': [('discount_type', '=', 'percentage')]}" class="oe_inline" />
+                                <span attrs="{'invisible': [('discount_type', '!=', 'percentage')],'required': [('discount_type', '=', 'percentage')]}" class="oe_inline">%</span>
+                            </div>
+                            <label string="Fixed Amount" for="discount_fixed_amount" attrs="{'invisible': ['|',('discount_type', '!=', 'fixed_amount'), ('reward_type', '!=', 'discount')]}" />
+                            <div attrs="{'invisible': ['|',('discount_type', '!=', 'fixed_amount'), ('reward_type', '!=', 'discount')]}">
+                                <field name="discount_fixed_amount" class="oe_inline" attrs="{'required':[('discount_type', '=', 'fixed_amount')]}" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                            </div>
+                            <field name="discount_apply_on" attrs="{'invisible':
+                                ['|', ('reward_type', 'in', ('product', 'free_shipping')), ('discount_type', '!=', 'percentage')]}" widget="radio" />
+                            <field name="discount_specific_product_ids" widget="many2many_tags" attrs="{'invisible': ['|', '|', ('discount_apply_on', '!=', 'specific_products'),('discount_type', '!=', 'percentage'), ('reward_type', 'in', ('product', 'free_shipping'))], 'required': [('reward_type', '=', 'discount'),('discount_apply_on', '=', 'specific_products'),('discount_type', '=', 'percentage')]}" placeholder="Select products" />
+                            <label for="discount_max_amount" string="Max Discount Amount" attrs="{'invisible': ['|', ('reward_type', 'in', ('product', 'free_shipping')), ('discount_type', '!=', 'percentage')]}" />
+                            <div attrs="{'invisible': ['|', ('reward_type', 'in', ('product', 'free_shipping')), ('discount_type', '!=', 'percentage')]}">
+                                <field name="discount_max_amount" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                                <span class="oe_grey">if 0, no limit</span>
+                            </div>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Promotion Program -->
+
+    <record id="sale_coupon_program_view_promo_program_form" model="ir.ui.view">
+        <field name="name">sale.coupon.promotion.program.form</field>
+        <field name="model">sale.coupon.program</field>
+        <field name="inherit_id" ref="sale_coupon_program_view_form_common" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='title']" position="inside">
+                <h1>
+                    <field name="name" class="oe_title" placeholder="Promotion Program Name..." height="20px"/>
+                </h1>
+            </xpath>
+            <xpath expr="//group[@name='reward']" position="before">
+                <field name="sequence" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='program_type']" position="after">
+                <field name="rule_partners_domain" placeholder="Select customer" widget="domain" options="{'model': 'res.partner', 'in_dialog': true}"/>
+            </xpath>
+            <xpath expr="//div[@name='rule_minimum_amount']" position="after">
+                <field name="promo_code_usage" widget="radio"/>
+                <field name="promo_code" attrs="{'required': [('promo_code_usage', '=', 'code_needed')], 'invisible': [('promo_code_usage', '=', 'no_code_needed')]}"/>
+            </xpath>
+            <xpath expr="//group[@name='validity']" position="inside">
+                <label string="Apply on First" for="maximum_use_number" class="oe_inline"/>
+                <div>
+                    <field name="maximum_use_number" class="oe_inline"/>
+                    <span> Orders</span>
+                    <span class="oe_grey"> if 0, infinite use</span>
+                </div>
+                <field name="rule_date_from" class="oe_inline"/>
+                <field name="rule_date_to" class="oe_inline"/>
+                <!-- <field name = "website_id"/> -->
+            </xpath>
+            <xpath expr="//group[@name='reward']" position="before">
+                <group>
+                    <field name="promo_applicability" widget="radio"/>
+                </group>
+                <group>
+                    <span class="oe_grey">
+                        <b>Apply on Current Order -</b>
+                        Reward will be applied on current order.
+                        <br/>
+                        <b>Apply on Next Order -</b>
+                        Generate a coupon for a next order.
+                    </span>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Tree hiển thị danh sách các khuyến mãi -->
+    <record id="sale_coupon_program_view_promo_program_tree" model="ir.ui.view">
+        <field name="name">sale.coupon.promotion.program.tree</field>
+        <field name="model">sale.coupon.program</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="active" />
+                <field name="company_id" groups="base.group_multi_company" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- menu gọi form tree  -->
+
+    <record id="sale_coupon_program_action_promo_program" model="ir.actions.act_window">
+        <field name="name">Promotion List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.coupon.program</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'tree'}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('sale_coupon_program_view_promo_program_form')})]" />
+        <!-- <field name="view_id"
+                   ref="sale_coupon_program_view_promo_program_form"/>         -->
+    </record>
+
+    <menuitem id="customer_menu_transactionmanagement_openingsale_promotions" 
+            name="Promotion Programs" 
+            parent="customer_menu_transactionmanagement_openingsale" 
+            action="sale_coupon_program_action_promo_program" sequence="2" />
+</odoo>

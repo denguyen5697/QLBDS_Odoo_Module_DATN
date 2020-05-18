@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="UomCategory_list_action">
+        <field name="name">Uom Categories</field>
+        <field name="res_model">uom.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        
+    <menuitem id="customer_menu_masterdata_uom_oumcategory" name="Uom Category"
+                  parent="customer_menu_masterdata_uom" action="UomCategory_list_action"
+                  sequence="2"/>
+
+    <!-- <record model="ir.ui.view" id="productcategory_form_view">
+            <field name="name">productcategory.form</field>
+            <field name="model">product.product</field>
+            <field name="arch" type="xml">
+                <form string="Website Public Categories">
+                <sheet>
+                    <field name="image_medium" widget="image" class="oe_avatar"/>
+                    <div class="oe_left">
+                        <group>
+                            <field name="name"/>
+                            <field name="parent_id"/>
+                            <field name="website_id" options="{'no_create': True}" groups="website.group_multi_website"/>
+                            <field name="sequence"/>
+                        </group>
+                    </div>
+                </sheet>
+            </form>
+            </field>
+        </record>                                                          -->
+     
+</odoo>

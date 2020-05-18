@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="commission_tree_view">
+        <field name="name">commission.tree</field>
+        <field name="model">commission</field>
+        <field name="arch" type="xml">
+            <tree string="commission Tree">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="commission_form_view">
+        <field name="name">commission.form</field>
+        <field name="model">commission</field>
+        <field name="arch" type="xml">
+            <form string="Commission Form">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Commission Sale" />
+                        <h1>
+                            <field name="name" placeholder="Commission name..." />
+                        </h1>
+                        <!-- <div name="options_active" attrs="{'invisible': ['&amp;', ('team_type', '!=', 'sales'), ('team_type', '!=', 'website')]}"/> -->
+                    </div>
+                    <notebook>
+                        <page string="Commission">
+                            <field name="commission_calculator_ids">
+                                <tree string="Commission Calculator" editable="bottom">
+                                    <control>
+                                        <create string="+ Add commission formula" />
+                                    </control>
+                                    <field name="from_number" />
+                                    <field name="to_number" />
+                                    <field name="commission" widget="Percent" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="commission_list_action">
+        <field name="name">commission</field>
+        <field name="res_model">commission</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="customer_menu_transactionmanagement_commission_commission" name="Commission List" parent="customer_menu_transactionmanagement_commissions" action="commission_list_action" sequence="1" />
+
+</odoo>

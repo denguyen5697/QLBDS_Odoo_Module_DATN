@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="cart_tree_view">
+        <field name="name">customer.cart.tree</field>
+        <field name="model">customer.cart</field>
+        <field name="arch" type="xml">
+            <tree string="Cart Tree">
+                <field name="cart_code" />
+                <field name="start_date" />
+                <field name="end_date" />
+                <!-- <field name="product_id"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="cart_form_view">
+        <field name="name">customer.cart.form</field>
+        <field name="model">customer.cart</field>
+        <field name="arch" type="xml">
+            <form string="cart Form">
+                <header>
+                    <button name="order_button" icon="fa-plus-circle" attrs = "{'invisible':[('status','=', '2')]}"  class="oe_highlight" string="Create new orders" type="object" />
+                    <button name="opening_sale_contract_button" icon="fa-plus-circle" attrs = "{'invisible':[('contract_status','=', '2')]}" class="oe_highlight" string="Create new opening sale contract" type="object"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Cart name" />
+                        <h1>
+                            <field name="name" placeholder="Cart name..." />
+                        </h1>
+                        <!-- <div name="options_active" attrs="{'invisible': ['&amp;', ('team_type', '!=', 'sales'), ('team_type', '!=', 'website')]}"/> -->
+                    </div>
+                    <group string = "General">
+                        <group>
+                            <field name="cart_code" />
+                            <field name="agency_id" />
+                            <field name="opening_saleId" readonly="1" />
+                                                        
+                        </group>
+                        <group>
+                            <field name="start_date" />
+                            <field name="end_date" />
+                            <field name="status" readonly="1"/>
+                            <field name="is_paid" invisible='1' readonly="1"/>
+                            
+                            <field name="contract_status" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name = 'opening_sale_contract_id' string = "Contract" readonly='1'/>
+                        <!-- <field name='opening_sale_contract_ids' widget="many2many" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name= "Date_signed"/>
+                                <field name= "total_deposit"/>
+                                <field name= "contract_status"/>
+                            </tree>
+                        </field> -->
+                    </group>
+                    <group string = "List of Products">
+                        <field name="product_id" widget="many2many" nolabel="1" select="1" colspan="4">
+                            <tree string="Registered sessions" editable="bottom">
+                                <field name="is_check" type="checkbox" />
+                                <field name="name" readonly="1" />
+                                <field name="project_id" readonly="1" />
+                                <field name="type" readonly="1" />
+                                <field name="taxes_id" string = "Taxes" widget= "many2many_tags" readonly="1"/>   
+                                <field name="list_price" readonly="1" />
+                            </tree>
+                        </field>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="customer_menu_transactionmanagement" name="Transaction Management" parent="main_customer_menu" sequence="2" />
+
+    <menuitem id="customer_menu_transactionmanagement_openingsale" name="Opening Sale" parent="customer_menu_transactionmanagement" sequence="1" />
+
+    <menuitem id="customer_menu_transactionmanagement_cart" name="Carts" parent="customer_menu_transactionmanagement" sequence="2" />
+
+    <menuitem id="customer_menu_transactionmanagement_contract" name="Contracts" parent="customer_menu_transactionmanagement" sequence="3" />
+
+    <menuitem id="customer_menu_transactionmanagement_commissions" name="Commission Sale" parent="customer_menu_transactionmanagement" sequence="4" />
+</odoo>

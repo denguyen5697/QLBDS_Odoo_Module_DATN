@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="opening_sale_contract_tree_view">
+        <field name="name">opening.sale.contract.tree</field>
+        <field name="model">opening.sale.contract</field>
+        <field name="arch" type="xml">
+            <tree string="Opening Sale Tree">
+                <field name="name" />
+                <field name="cart_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="opening_sale_contract_view_kanban" model="ir.ui.view">
+        <field name="name">opening.sale.contract.form</field>
+        <field name="model">opening.sale.contract</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" default_group_by="contract_status">
+                <!-- <field name="user_id" string="Project Manager"/> -->
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
+                                        oe_kanban_global_click_edit oe_semantic_html_override">
+                            <div class="row">
+                                <div class="col-12">
+                                    <strong><field name="name" string="Project Name"/></strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <lable>Giỏ hàng:</lable>
+                                </div>
+                                <div class="col-8">
+                                    <field name="cart_id"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <lable>Đặt cọc:</lable>
+                                </div>
+                                <div class="col-8">
+                                    <field name="total_deposit"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <lable>Ngày kí:</lable>
+                                </div>
+                                <div class="col-8">
+                                    <field name="Date_signed"/>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-8">
+                                    <field name="partner_id" string="Contact"/>
+                                </div>
+                                <div class="col-4">
+                                    <div class="oe_kanban_bottom_right">
+                                        <img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" t-att-alt="record.user_id.value" width="24" height="24" class="oe_kanban_avatar float-right"/>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- form -->
+    <record model="ir.ui.view" id="opening_sale_contract_form_view">
+        <field name="name">opening.sale.contract.form</field>
+        <field name="model">opening.sale.contract</field>
+        <field name="arch" type="xml">
+            <form string="Opening Sales contract Form">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Openning sale" />
+                        <h1>
+                            <field name="name" placeholder="Openning sale contract name..." />
+                        </h1>
+                        <!-- <div name="options_active" attrs="{'invisible': ['&amp;', ('team_type', '!=', 'sales'), ('team_type', '!=', 'website')]}"/> -->
+                    </div>
+                    <group>
+                        <group>
+                            <field name="Date_signed" />
+                            <!-- <field name="total_deposit" /> -->
+                            <field name="total_deposit" ></field>
+                        </group>
+                        <group>
+                            <field name="cart_id" readonly='1' />
+                            <field name="product_agent_received" />
+                            <field name="contract_status" />
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <group string="Products agent received">
+                            <field name="product_ids" widget="many2many" nolabel="1" select="1" colspan="4">
+                                <tree string="Registered sessions" editable="bottom">
+                                    <field name="is_check" type="checkbox"/>
+                                    <field name="name" readonly="1"/>
+                                    <field name="project_id" readonly="1"/>
+                                    <field name="product_type" readonly="1"/>  
+                                    <field name="taxes_id" string = "Taxes" widget= "many2many_tags" readonly="1"/>       
+                                    <field name="list_price" readonly="1"/>                                            
+                                                                            
+                                </tree>
+                            </field>
+                        </group> 
+                        <group string = "Infomation Detail">
+                            <group>
+                                <group string = "Party A(Vendor)">
+                                    <field name="vendor_id" />
+                                    <label for="street" string="Address" />
+                                    <div>
+                                        <div class="o_address_format" name="div_address">
+                                            <field name="vendor_street" placeholder="Street..." class="o_address_street" />
+                                            <field name="vendor_ward" placeholder="ward..." class="o_address_street" />
+                                            <field name="vendor_district" />
+                                            <field name="vendor_city" placeholder="City" class="o_address_city"/>
+                                            <field name="vendor_state_id" class="o_address_state" placeholder="State"/>
+                                            <field name="vendor_country_id" placeholder="Country" class="o_address_country"/>
+                                        </div>
+                                    </div>
+                                    <field name="representative_B"/>
+                                    <field name="representative_posB"/>
+                                    <field name="vendor_phone" />
+                                    <field name="vendor_vat" placeholder="mã thuế..."/>
+                                </group>
+                                <group string="Party B(Agency)">
+                                    <field name="agency_id" />
+                                    <label for="street" string="Address" />
+                                    <div>
+                                        <div class="o_address_format" name="div_address">
+                                            <field name="agency_street" placeholder="Street..." class="o_address_street" />
+                                            <field name="agency_ward" placeholder="Ward..." class="o_address_street" />
+                                            <field name="agency_district" />
+                                            <field name="agency_city" placeholder="City" class="o_address_city"/>
+                                            <field name="agency_state_id" class="o_address_state" placeholder="State"/>
+                                            <field name="agency_country_id" placeholder="Country" class="o_address_country"/>
+                                        </div>
+                                    </div>
+                                    <field name="representative_A"/>
+                                    <field name="representative_posA"/>
+                                    <field name="agency_phone" />
+                                    <field name="agency_vat" placeholder="mã thuế..."/>
+                                </group>
+                            </group>
+                        </group>   
+                        <group string = "Contract Annex">
+                            <group string = "Contract Annex">
+                            <field name="op_annex_id" />
+                            </group>
+                        </group>                                                                   
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="openingsalecontract_list_action">
+        <field name="name">Opening sale contract</field>
+        <field name="res_model">opening.sale.contract</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <menuitem id="customer_menu_transactionmanagement_openingsale_openingsalecontract" name="Opening Sale Contract" parent="customer_menu_transactionmanagement_openingsale" action="openingsalecontract_list_action" sequence="3" />
+
+</odoo>

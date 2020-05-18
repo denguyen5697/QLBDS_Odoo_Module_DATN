@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_configuration_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="sale.res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'sale_management'}</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="configuration_product_action">
+        <field name="name">Attributes</field>
+        <field name="res_model">product.attribute</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="configuration_product_tax_action">
+        <field name="name">Taxes</field>
+        <field name="res_model">account.tax</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="configuration_payments_paymentterms">
+        <field name="name">Payment Terms</field>
+        <field name="res_model">account.payment.term</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="configuration_payments_journal">
+        <field name="name">Journals</field>
+        <field name="res_model">account.journal</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+   
+
+    
+    <menuitem id="customer_menu_configuration" name="Configuration" parent="main_customer_menu" sequence="5" />
+    <menuitem id="customer_menu_configuration_settings" 
+            name="Settings" 
+            parent="customer_menu_configuration" 
+            action="customer.action_configuration_settings"
+            sequence="1" />
+
+    <menuitem id="menu_config_bank_accounts"
+        name="Bank Accounts"
+        parent="customer_menu_configuration"
+        sequence="2"/>
+
+    <menuitem id="menu_action_res_bank_form"
+        action="base.action_res_bank_form"
+        parent="menu_config_bank_accounts"
+        sequence="1"/>
+
+    <menuitem id="menu_action_res_partner_bank_form"
+        action="base.action_res_partner_bank_account_form"
+        parent="menu_config_bank_accounts"
+        sequence="2"/>
+
+     <!-- configuration    -->
+    <menuitem id="menu_config_product"
+        name="Products"
+        parent="customer_menu_configuration"
+        sequence="3"/>
+
+
+    <menuitem id="menu_config_product_Attributes"
+        name="Attributes"
+        action = "configuration_product_action"
+        parent="menu_config_product"
+        sequence="1"/> 
+
+    <menuitem id="menu_config_product_taxes"
+        name="Taxes"
+        action = "configuration_product_tax_action"
+        parent="menu_config_product"
+        sequence="2"/>   
+        
+        <!-- payment term -->
+    <menuitem id="menu_config_payments"
+        name="Payments"
+        parent="customer_menu_configuration"
+        sequence="4"/>   
+    <menuitem id="menu_config_payments_paymenttermms"
+        name="Payment Terms"
+        parent="menu_config_payments"
+        action = "configuration_payments_paymentterms"
+        sequence="1"/> 
+        
+    <menuitem id="menu_config_accounting"
+        name="Accounting"
+        parent="customer_menu_configuration"
+        sequence="5"/>     
+    <menuitem id="menu_config_payments_Journals"
+        name="Journals"
+        parent="menu_config_accounting"
+        action = "configuration_payments_journal"
+        sequence="1"/>         
+</odoo>

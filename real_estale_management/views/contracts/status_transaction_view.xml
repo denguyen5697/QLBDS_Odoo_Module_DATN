@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+  <record id="status_tree_view" model="ir.ui.view">
+    <field name="name">Status.tree</field>
+    <field name="model">transaction_status</field>
+    <field name="arch" type="xml">
+      <tree editable="bottom" string="Status Transaction">
+        <field name="trans_id" />
+        <field name="trans_date" />
+        <field name="trans_price" />
+        <field name="paid" />
+        <field name="arrears" />
+        <field name="content" />
+      </tree>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="contract_annex_form_view">
+    <field name="name">Status Transaction Form View</field>
+    <field name="model">transaction_status</field>
+    <field name="arch" type="xml">
+      <form string="Status Transaction">
+        <group>
+          <group>
+            <field name="trans_id" />
+            <field name="trans_date" />
+            <field name="trans_price" />
+            <field name="paid" />
+            <field name="arrears" />
+            <field name="content" />
+          </group>
+        </group>
+      </form>
+    </field>
+  </record>
+
+  <record id="status_action" model="ir.actions.act_window">
+    <field name="name">Status Transaction</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">transaction_status</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <!-- <field name="search_view_id" ref="base.view_res_partner_filter"/> -->
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+            Create a contact in your address book
+          </p>
+      <p>
+            Odoo helps you to easily track all activities related to a customer.
+          </p>
+    </field>
+
+  </record>
+
+  <!-- <menuitem id="id_status" name="Status Transaction"
+        parent="customer_menu_transactionmanagement_openingsale" action="status_action"
+        sequence = "6"/> -->
+
+</odoo>

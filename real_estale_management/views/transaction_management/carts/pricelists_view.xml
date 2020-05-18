@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="pricelists_list_action">
+        <field name="name">Pricelists</field>
+        <field name="res_model">product.pricelist</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="customer_menu_transactionmanagement_openingsale_pricelists" name="Pricelists" parent="customer_menu_transactionmanagement_openingsale" action="pricelists_list_action" sequence="4" />
+
+</odoo>
